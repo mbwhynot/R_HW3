@@ -1,25 +1,64 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
+const list = ["Яблоко", "Апельсин", "Груша"];
+
+class List extends React.Component {
+
+render () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <ul>
+      {this.props.listArr.map(element => {
+        return <li key ={element}>{element}</li>
+
+      } )}
+    </ul>
+  ) 
+}
+}
+
+const listsec = [
+  {
+    id:'1',
+    value: 'Яблоко'
+  },
+  {
+    id:'2',
+    value: 'Апельсин'
+  },
+  {
+    id:'3',
+    value: 'Груша'
+  }
+]
+
+
+class ListSec extends React.Component {
+
+  render () {
+    return (
+      <ul>
+        {this.props.listArr.map(element => {
+          return <li key ={element.id}>{element.value}</li>
+  
+        } )}
+      </ul>
+    ) 
+  }
+  }
+
+class App extends React.Component {
+  render () {
+  return (
+    <div>
+      <header>
+    <List listArr = {list}/>
+    <ListSec listArr = {listsec}/>
       </header>
     </div>
+  
   );
+  }
 }
 
 export default App;
