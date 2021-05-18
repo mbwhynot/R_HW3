@@ -47,18 +47,83 @@ class ListSec extends React.Component {
   }
   }
 
+class Button extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count : 0
+    }
+    this.handleClick = this.handleClick.bind(this)
+
+  }
+
+  handleClick () {
+    this.setState({
+      count : this.state.count + 1
+    })
+  }
+
+
+  render() {
+    return (
+      <div className = 'App'>
+        <div><h1>{this.state.count}</h1></div>
+        <button onClick = {this.handleClick}>
+          Click +
+        </button>
+      </div>
+    )
+  }
+}
+
+class StateFull extends React.Component 
+{
+  state = {
+  value : 0
+  }
+
+handleClick() {
+    this.setState() // Не работает prevState , пишет что prevState не определена и props тоже
+    return {
+      value : 5 
+    }
+  }
+
+
+  render() {
+    return (
+      <div className = 'App'>
+        <div><h1>{this.state.count}</h1></div>
+        <button onClick = {this.handleClicke}>
+          Click -
+        </button>
+      </div>
+    )
+  }
+
+}
+
+
 class App extends React.Component {
   render () {
   return (
     <div>
       <header>
+
+    <Button />
+    <StateFull/>
     <List listArr = {list}/>
     <ListSec listArr = {listsec}/>
+
       </header>
     </div>
   
   );
   }
 }
+
+
+
+
 
 export default App;
