@@ -63,6 +63,15 @@ class Button extends React.Component {
     })
   }
 
+  handleClicke() {
+    this.setState((prevState,props)=>{
+    console.log(prevState,props);
+    return {
+      count : prevState.count - 1 
+      }
+    
+    }) 
+    } 
 
   render() {
     return (
@@ -71,37 +80,18 @@ class Button extends React.Component {
         <button onClick = {this.handleClick}>
           Click +
         </button>
+        <button onClick = {() => this.handleClicke()}>
+        Click -
+      </button>
       </div>
     )
   }
 }
 
-class StateFull extends React.Component 
-{
-  state = {
-  value : 0
-  }
-
-handleClick() {
-    this.setState() // Не работает prevState , пишет что prevState не определена и props тоже
-    return {
-      value : 5 
-    }
-  }
 
 
-  render() {
-    return (
-      <div className = 'App'>
-        <div><h1>{this.state.count}</h1></div>
-        <button onClick = {this.handleClicke}>
-          Click -
-        </button>
-      </div>
-    )
-  }
 
-}
+
 
 
 class App extends React.Component {
@@ -111,7 +101,6 @@ class App extends React.Component {
       <header>
 
     <Button />
-    <StateFull/>
     <List listArr = {list}/>
     <ListSec listArr = {listsec}/>
 
